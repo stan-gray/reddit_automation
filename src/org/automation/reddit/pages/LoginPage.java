@@ -13,7 +13,7 @@ public class LoginPage {
 	
 	public void enterUsername(String uname) throws Exception
 	{
-		driver.findElement(By.id(Utility.fetchLocatorValue("login_username_id"))).sendKeys(uname);
+		driver.findElement(By.name(Utility.fetchLocatorValue("login_username_id"))).sendKeys(uname);
 		
 	}
 	
