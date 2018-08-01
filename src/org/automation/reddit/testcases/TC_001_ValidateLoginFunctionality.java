@@ -14,7 +14,7 @@ import org.testng.annotations.Test;
 
 public class TC_001_ValidateLoginFunctionality extends DriverInstance {
 	
-	@Test(dataProvider="Excel")
+	@Test(dataProvider="Excel" , dataProviderClass=DataGenerator.class)
 	public void tc_001_login_functionality(String uname, String pass) throws Exception
 	{
 		LoginPage login = new LoginPage(driver);
@@ -23,33 +23,5 @@ public class TC_001_ValidateLoginFunctionality extends DriverInstance {
 		login.clickSignin();
 	}
 	
-	@DataProvider(name="Excel")
-	public Object[][] testDataGenerator() throws Exception
-	{   //Read data without exel
-		//Object [][] data = {{"stangray94", "12345678"}, {"kurka", "12345678"}, {"durka", "12345678"}};
-		//return data;
-		//Use Excel
-		FileInputStream file = new FileInputStream("./TestData/TestData.xlsx");
-		XSSFWorkbook workbook = new XSSFWorkbook(file);
-		XSSFSheet loginSheet = workbook.getSheet("Login");
-		int numberOfData = loginSheet.getPhysicalNumberOfRows();
-		Object [][] testData= new Object[numberOfData][2];
-		
-		for(int i=0;i<numberOfData;i++)
-		{
-				XSSFRow row = loginSheet.getRow(i);
-				XSSFCell username = row.getCell(0);
-				XSSFCell password = row.getCell(1);
-				testData[i][0] = username.toString();
-				testData[i][0] = password.toString();
-		}
-				
-				return testData;
-	}
-
-	private Object getStringCellValue() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
+	
 }

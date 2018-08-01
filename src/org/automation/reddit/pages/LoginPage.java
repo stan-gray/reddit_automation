@@ -13,19 +13,20 @@ public class LoginPage {
 	
 	public void enterUsername(String uname) throws Exception
 	{
-		driver.findElement(By.name(Utility.fetchLocatorValue("login_username_id"))).sendKeys(uname);
+		driver.findElement(By.name(Utility.fetchLocatorValue("login_username_name"))).sendKeys(uname);
 		
 	}
 	
 	public void enterPassword(String pass) throws Exception
 	{
-		driver.findElement(By.id(Utility.fetchLocatorValue("login_password_id"))).sendKeys(pass);
+		driver.findElement(By.name(Utility.fetchLocatorValue("login_password_name"))).sendKeys(pass);
 	}
 
 	public void clickSignin() throws Exception
 	{
-		driver.findElement(By.xpath(Utility.fetchLocatorValue("login_sigin_xpath"))).click();
+		driver.findElement(By.className(Utility.fetchLocatorValue("login_signin_css"))).click();
 	}
+	
 	
 
 }
